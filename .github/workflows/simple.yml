@@ -1,24 +1,15 @@
-name: Shell commands
+name: Actions commands
 
 on: [push]
 
 jobs:
-  run-shell-command:
+  run-github-actions:
     runs-on: ubuntu-latest
     steps:
-      - name: echo a string
-        run: echo "Hello World"
-      - name: pwd and ls -la
-        run: |
-          pwd
-          ls -la
-          ls -lrt
-  run-windows-commands:
-    runs-on: windows-latest
-    needs: ["run-shell-command"]
-    steps:
-      - name: Directory powershell
-        run: Get-Location
-      - name: Directory bash
-        run: pwd
-        shell: bash
+      - name: Simple JS Action
+        id: greet
+        uses: actions/hello-world-javascript-actions@v1
+        with:
+          who-to-greet: Nrupen
+      - name: Log greeting time
+        run: echo "${{steps.greet.outputs.time}}"
