@@ -15,6 +15,7 @@ jobs:
           ls -lrt
   run-windows-commands:
     runs-on: windows-latest
+    needs:['run-shell-command']
     steps:
       - name: Directory powershell
         run: Get-Location
