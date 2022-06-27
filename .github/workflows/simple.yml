@@ -8,6 +8,11 @@ jobs:
     steps:
       - name: echo a string
         run: echo "Hello World"
+      - name: pwd and ls -la
+        run: |
+          pwd
+          ls -la
+          ls -lrt
       - name: multiline command
         run: |
           node -v
@@ -17,3 +22,4 @@ jobs:
           python --version
           import platform
           print(platform.processor())
+        shell: python
