@@ -1,4 +1,4 @@
-name: Actions commands
+name: Checkout code and perform operations
 
 on: [push]
 
@@ -6,10 +6,13 @@ jobs:
   run-github-actions:
     runs-on: ubuntu-latest
     steps:
-      - name: Simple JS Action
-        id: greet
-        uses: actions/hello-world-javascript-action@v1.1
-        with:
-          who-to-greet: Nrupen
-      - name: Log greeting time
-        run: echo "${{steps.greet.outputs.time}}"
+      - name: List files before checkout
+        run: |
+          pwd
+          ls -la
+        - name: checkout code
+          use: actions/checkout@v3.02
+        - name: List files after checkout
+          run: |
+            pwd
+            ls -la
