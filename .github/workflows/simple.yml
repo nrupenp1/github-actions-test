@@ -13,12 +13,11 @@ jobs:
           pwd
           ls -la
           ls -lrt
-      - name: multiline command
-        run: |
-          node -v
-          npm -v
-      - name: Pyhton command
-        run: |
-          import platform
-          print(platform.processor())
-        shell: python
+  run-windows-commands:
+    runs-on: windows-latest
+    steps:
+      - name: Directory powershell
+        run: Get-Location
+      - name: Directory bash
+        run: pwd
+        shell: bash
